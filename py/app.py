@@ -1,13 +1,14 @@
-from flask import Flask, render_template
+"""
+Este é o módulo principal da aplicação Flask.
+Aqui configuramos as rotas e a lógica do servidor.
+"""
 
+from flask import Flask, render_template
 app = Flask(__name__)
 
-#Rota para a página inicial
-
-app.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
