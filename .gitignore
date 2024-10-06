@@ -2,3 +2,5 @@
 /virtual-ambiente
 /.idea
 /.vscode
+/.pytest_cache
+/node_modules

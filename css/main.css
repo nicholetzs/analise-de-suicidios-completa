@@ -67,29 +67,3 @@ nav a:hover span {
   transition: margin-left 0.3s ease;
   margin-left: 4rem; /* Margem quando colapsada */
 }
-
-body {
-  --sb-track-color: #343b3e;
-  --sb-thumb-color: #680bbf;
-  --sb-size: 10px;
-}
-
-body::-webkit-scrollbar {
-  width: var(--sb-size);
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 8px;
-}
-
-@supports not selector(::-webkit-scrollbar) {
-  body {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-  }
-}
