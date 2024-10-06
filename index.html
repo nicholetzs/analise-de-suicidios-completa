@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Análise de Suicídios</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-    </style>
+    <style></style>
   </head>
-  <body class="bg-gray-900 text-white">
+
+  <body>
     <aside
-      class="fixed left-4 top-4 flex h-[calc(100vh-2rem)] w-16 flex-col items-center rounded-full bg-gray-800 p-2 shadow-lg transition-all duration-300 ease-in-out hover:w-64 hover:items-start hover:rounded-3xl group"
+      class="sidebar fixed left-4 top-4 flex h-[calc(100vh-2rem)] flex-col bg-gray-800 p-2 shadow-lg transition-all duration-300 ease-in-out group"
     >
       <div
         class="mb-8 mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-600 text-white"
@@ -41,7 +53,7 @@
       <nav class="flex w-full flex-col items-center space-y-4">
         <a
           href="#"
-          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-gray-700"
+          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
         >
           <div
             class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
@@ -68,7 +80,7 @@
         </a>
         <a
           href="#"
-          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-gray-700"
+          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
         >
           <div
             class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
@@ -93,8 +105,91 @@
             >Sobre</span
           >
         </a>
-        <!-- Adicione mais itens de menu aqui seguindo o mesmo padrão -->
+        <a
+          href="#"
+          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 17l5-5 4 4 7-7"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 17h18M3 7h18M3 12h18"
+              />
+            </svg>
+          </div>
+          <span
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block animate-[fadeIn_0.3s_ease-in-out]"
+            >Gráficos</span
+          >
+        </a>
       </nav>
     </aside>
+
+    <main class="main-content ml-24 p-8">
+      <h1 class="text-3xl font-bold mb-8 text-primary">
+        Dashboard de Estatísticas de Suicídio
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-lg font-semibold mb-2 text-primary">
+            CASOS (MENSAL)
+          </h2>
+          <p class="text-3xl font-bold">1,234</p>
+        </div>
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-lg font-semibold mb-2 text-secondary">
+            CASOS (ANUAL)
+          </h2>
+          <p class="text-3xl font-bold">15,678</p>
+        </div>
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-lg font-semibold mb-2 text-info">TAREFAS</h2>
+          <p class="text-3xl font-bold">50%</p>
+        </div>
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-lg font-semibold mb-2 text-warning">
+            SOLICITAÇÕES PENDENTES
+          </h2>
+          <p class="text-3xl font-bold">18</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Visão Geral dos Casos
+          </h2>
+          <div class="h-64 bg-gray-700 flex items-center justify-center">
+            <p class="text-gray-500">Gráfico de Linha (Placeholder)</p>
+          </div>
+        </div>
+
+        <div class="bg-dark rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Fontes de Dados
+          </h2>
+          <div class="h-64 bg-gray-700 flex items-center justify-center">
+            <p class="text-gray-500">Gráfico de Pizza (Placeholder)</p>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
+  <!-- End of Sidebar -->
 </html>

@@ -1,0 +1,95 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body {
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light gray text */
+  display: flex; /* Make body a flex container */
+}
+.bg-dark {
+  background-color: #2a2a2a; /* Darker gray for cards */
+}
+.hover\:bg-dark:hover {
+  background-color: #333; /* Slightly lighter on hover */
+}
+.text-primary {
+  color: #bb86fc; /* Purple */
+}
+.text-secondary {
+  color: #03dac6; /* Teal */
+}
+.text-warning {
+  color: #ffc107; /* Amber */
+}
+.text-info {
+  color: #17a2b8; /* Info blue */
+}
+.sidebar {
+  width: 4rem; /* Largura inicial colapsada */
+  transition: width 0.3s ease; /* Transição suave */
+  border-radius: 2rem; /* Borda arredondada completa */
+  overflow: hidden; /* Esconder o conteúdo que vai além dos limites */
+  position: relative;
+}
+
+.sidebar:hover {
+  width: 11rem; /* Largura quando expandida */
+}
+
+.logo {
+  position: absolute;
+  top: 1rem; /* Mantém a logo sempre no topo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #6b46c1; /* Ajuste da cor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a span {
+  transition: opacity 0.3s ease-in-out; /* Transição suave */
+}
+
+nav a:hover span {
+  opacity: 1; /* Mostra o texto no hover */
+}
+
+.main-content {
+  transition: margin-left 0.3s ease;
+  margin-left: 4rem; /* Margem quando colapsada */
+}
+
+body {
+  --sb-track-color: #343b3e;
+  --sb-thumb-color: #680bbf;
+  --sb-size: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
