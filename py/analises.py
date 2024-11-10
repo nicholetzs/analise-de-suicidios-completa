@@ -68,11 +68,36 @@ def criar_grafico_ocorrencias_por_ano():
     grafico_html = pio.to_html(fig, full_html=False)
     return grafico_html
 
-@app.route('/')
-def index():
-    # Renderiza o gráfico e passa para o template
-    grafico_html = criar_grafico_ocorrencias_por_ano()
-    return render_template('index.html', grafico_html=grafico_html)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def gerar_grafico_local():
+   
+    dados = ler_arquivo_csv("cleaned_result.csv")
+    if dados is None:
+        return "<p>Erro ao carregar os dados.</p>"
+    
+    # Agrupar os dados por local e somar as ocorrências
+    dados_agrupados = dados.groupby("LOCAL")["CONTAGEM"].sum().reset_index(name='total_ocorrencias')
+    
+    # Criar o gráfico de pizza
+    fig = px.pie(
+        dados_agrupados, 
+        names='LOCAL', 
+        values='total_ocorrencias', 
+        title="Distribuição De Suicídios Por Local",
+        color='LOCAL',  # Cores distintas para os locais
+        color_discrete_sequence=px.colors.qualitative.Set3  # Cores definidas
+    )
+
+    # Estilo e configuração do gráfico
+    fig.update_layout(
+        plot_bgcolor='rgba(18,18,30,1)',        # Cor de fundo do gráfico (azul escuro)
+        paper_bgcolor='rgba(10,10,25,1)',       # Cor de fundo do "papel" (preto-azulado)
+        font=dict(
+            family="Arial",                     # Fonte do texto
+            size=12,                            # Tamanho da fonte
+            color="#E1E1FF"                     # Cor do texto (branco azulado)
+        ),
+        title_font=dict(size=20, color="#A29BFE")  # Fonte e cor do título
+    )
+
+    return fig
