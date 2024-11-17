@@ -267,3 +267,23 @@ def gerar_grafico_suicidios_distribuicao():
     gerar_grafico_suicidios_distribuicao_html = pio.to_html(
         fig, full_html=False)
     return gerar_grafico_suicidios_distribuicao_html
+
+
+# Função para identificar a maior causa de suicídio
+def maior_causa_suicidio():
+    # Carregar os dados
+    dados = ler_arquivo_csv("cleaned_result.csv")
+    if dados is None:
+        return "<p>Erro ao carregar os dados.</p>"
+
+    # Agrupar os dados por 'CAUSAS' e somar as 'CONTAGEM'
+    dados_agrupados = dados.groupby('CAUSAS')['CONTAGEM'].sum().reset_index()
+
+    # Identificar a causa com o maior número de suicídios
+    maior_causa = dados_agrupados.loc[dados_agrupados['CONTAGEM'].idxmax()]
+
+    # Retornar a maior causa e o número de suicídios
+    causa = maior_causa['CAUSAS']
+    suicidios = maior_causa['CONTAGEM']
+
+    return causa, suicidios

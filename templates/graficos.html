@@ -120,10 +120,9 @@
           <p class="text-sm text-gray-300">Suicídios: {{ ocorrencias }}</p>
         </div>
         <div class="p-4 bg-gray-800 shadow-lg text-center">
-          <h2 class="text-lg font-semibold mb-2 text-warning">
-            SOLICITAÇÕES PENDENTES
-          </h2>
-          <p class="text-3xl font-bold">18</p>
+          <h2 class="text-lg font-bold text-white">Maior Causa de Suicídio</h2>
+          <p class="text-md text-yellow-400">{{causa | capitalize}}</p>
+          <p class="text-sm text-gray-300">Suicídios: {{qtd | safe}}</p>
         </div>
       </div>
 
@@ -157,7 +156,7 @@
 
         <div class="bg-dark shadow-md p-6">
           <h2 class="text-xl font-semibold mb-4 text-primary">
-            Distribuição De Suicídios Por Local
+            Distribuição De Suicídios Nos Anos
           </h2>
           <div class="flex items-center justify-center">
             <div>{{ gerar_grafico_suicidios_distribuicao_html | safe }}</div>
