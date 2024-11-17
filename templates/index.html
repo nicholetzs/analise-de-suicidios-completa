@@ -1,127 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <!-- Custom styles for this template-->
-    <link href="css/main.css" rel="stylesheet" />
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataStar Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-  <body>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              astro: {
+                start: "#4B0082", // Índigo profundo
+                end: "#00008B", // Azul escuro
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-transparent">
+    <div class="starry-sky">
+      <div class="stars"></div>
+    </div>
     <aside
-      class="sidebar fixed left-4 top-4 flex h-[calc(100vh-2rem)] flex-col bg-gray-800 p-2 shadow-lg transition-all duration-300 ease-in-out group"
+      class="sidebar fixed left-4 top-4 flex h-[calc(100vh-2rem)] w-16 flex-col bg-gray-800 bg-opacity-80 p-2 shadow-lg transition-all duration-300 ease-in-out group hover:w-64 rounded-2xl backdrop-blur-sm"
     >
-      <div
-        class="mb-8 mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-600 text-white"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
+      <div class="mb-8 mt-4 flex flex-col items-center">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-astro-start to-astro-end text-white shadow-lg"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-          />
-        </svg>
+          <i class="fas fa-star text-xl"></i>
+        </div>
+        <span
+          class="mt-2 hidden text-sm font-medium text-white group-hover:block"
+          >DataStar Analytics</span
+        >
       </div>
       <nav class="flex w-full flex-col items-center space-y-4">
         <a
           href="#"
-          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-5 h-5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
+            <i class="fas fa-home text-lg"></i>
           </div>
           <span
-            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block animate-[fadeIn_0.3s_ease-in-out]"
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
             >Início</span
           >
         </a>
         <a
           href="#"
-          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M11.25 8.25h1.5m-.75 3v5.25m8.25-2.25A9 9 0 11.75 12a9 9 0 0118 0z"
-              />
-            </svg>
+            <i class="fas fa-info-circle text-lg"></i>
           </div>
           <span
-            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block animate-[fadeIn_0.3s_ease-in-out]"
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
             >Sobre</span
           >
         </a>
         <a
           href="#"
-          class="flex w-full items-center rounded-full p-2 transition-colors duration-200 hover:bg-dark"
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 group-hover:bg-purple-600 group-hover:text-white"
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 17l5-5 4 4 7-7"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 17h18M3 7h18M3 12h18"
-              />
-            </svg>
+            <i class="fas fa-chart-bar text-lg"></i>
           </div>
           <span
-            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block animate-[fadeIn_0.3s_ease-in-out]"
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
             >Gráficos</span
           >
         </a>
@@ -159,21 +132,21 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-dark rounded-lg shadow-md p-6">
+        <div class="bg-dark shadow-md p-6">
           <h2 class="text-xl font-semibold mb-4 text-primary">
-            Visão Geral dos Casos
+            Distribuição de Suicídios por Ano
           </h2>
-          <div class="h-64 bg-gray-700 flex items-center justify-center">
-            <p class="text-gray-500">{{ grafico_html | safe }}</p>
+          <div class="bg-gray-700 flex items-center justify-center">
+            <div class="">{{ grafico_html | safe }}</div>
           </div>
         </div>
 
-        <div class="bg-dark rounded-lg shadow-md p-6">
+        <div class="bg-dark shadow-md p-6">
           <h2 class="text-xl font-semibold mb-4 text-primary">
-            Fontes de Dados
+            Distribuição De Suicídios Por Local
           </h2>
-          <div class="h-64 bg-gray-700 flex items-center justify-center">
-            <p class="text-gray-500">{{ grafico_local | safe }}</p>
+          <div class="flex items-center justify-center">
+            <div class="">{{ gerar_gr_html | safe }}</div>
           </div>
         </div>
       </div>
