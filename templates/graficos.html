@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DataStar Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              astro: {
+                start: "#4B0082", // Índigo profundo
+                end: "#00008B", // Azul escuro
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-transparent">
+    <div class="starry-sky">
+      <div class="stars"></div>
+    </div>
+    <aside
+      class="sidebar fixed left-4 top-4 flex h-[calc(100vh-2rem)] w-16 flex-col bg-gray-800 bg-opacity-80 p-2 shadow-lg transition-all duration-300 ease-in-out group hover:w-64 rounded-2xl backdrop-blur-sm"
+    >
+      <div class="mb-8 mt-4 flex flex-col items-center">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-astro-start to-astro-end text-white shadow-lg"
+        >
+          <i class="fas fa-star text-xl"></i>
+        </div>
+        <span
+          class="mt-2 hidden text-sm font-medium text-white group-hover:block"
+          >DataStar Analytics</span
+        >
+      </div>
+      <nav class="flex w-full flex-col items-center space-y-4">
+        <a
+          href={{ url_for('inicio') }}
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
+          >
+            <i class="fas fa-home text-lg"></i>
+          </div>
+          <span
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
+            >Início</span
+          >
+        </a>
+        <a
+          href={{ url_for('info') }}
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
+          >
+            <i class="fas fa-info-circle text-lg"></i>
+          </div>
+          <span
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
+            >Informações</span
+          >
+        </a>
+        <a
+          href={{ url_for('graficos') }}
+          class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-700 text-gray-300 group-hover:bg-opacity-0 group-hover:text-white transition-all duration-300 ease-in-out"
+          >
+            <i class="fas fa-chart-bar text-lg"></i>
+          </div>
+          <span
+            class="ml-4 hidden text-sm font-medium text-gray-300 group-hover:inline-block group-hover:text-white animate-[fadeIn_0.3s_ease-in-out]"
+            >Gráficos</span
+          >
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content ml-24 p-8">
+      <h1 class="text-3xl font-bold mb-8 text-primary">
+        Dashboard de Estatísticas de Suicídio
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+          <h2 class="text-lg font-bold text-white">
+            Casos Totais dos Anos Analisados
+          </h2>
+            <p class="text-2xl text-yellow-400">{{total_suicidios | safe}}</p>
+        </div>
+      <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+        <h2 class="text-lg font-bold text-white">Faixa Etária Mais Afetada</h2>
+        <p class="text-2xl text-yellow-400">{{ idade | safe }}</p>
+        <p class="text-sm text-gray-300">Suicídios: {{ suicidios | safe }}</p>
+      </div>
+        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+          <h2 class="text-lg font-semibold mb-2 text-info">TAREFAS</h2>
+          <p class="text-3xl font-bold">50%</p>
+        </div>
+        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+          <h2 class="text-lg font-semibold mb-2 text-warning">
+            SOLICITAÇÕES PENDENTES
+          </h2>
+          <p class="text-3xl font-bold">18</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-dark shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Distribuição de Suicídios por Ano
+          </h2>
+          <div class="bg-gray-700 flex items-center justify-center">
+            <div class="">{{ grafico_html | safe }}</div>
+          </div>
+        </div>
+
+        <div class="bg-dark shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Distribuição De Suicídios Por Local
+          </h2>
+          <div class="flex items-center justify-center">
+            <div class="">{{ gerar_gr_html | safe }}</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </body>
+  <!-- End of Sidebar -->
+</html>

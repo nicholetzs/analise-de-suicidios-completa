@@ -111,3 +111,24 @@ def gerar_grafico_local():
     # Converte o gráfico em HTML
     gerar_gr_html = pio.to_html(fig, full_html=False)
     return gerar_gr_html
+
+
+def total_suicidios():
+    dados = ler_arquivo_csv("cleaned_result.csv")
+    if dados is None:
+        return "<p>Erro ao carregar os dados.</p>"
+
+    total_suicidios = dados['CONTAGEM'].sum()
+    return total_suicidios
+
+
+def idade_mais_afetada():
+    dados = ler_arquivo_csv("cleaned_result.csv")
+    if dados is None:
+        return None, None
+
+    faixa_agrupada = dados.groupby('IDADE')['CONTAGEM'].sum()
+    idade = faixa_agrupada.idxmax()
+    suicidios = faixa_agrupada.max()
+
+    return idade, suicidios
