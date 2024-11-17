@@ -6,6 +6,15 @@
     opacity: 1;
   }
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   background-color: #1a1a1a; /* Dark background */
   color: #e0e0e0; /* Light gray text */
@@ -61,11 +70,6 @@ nav a span {
 
 nav a:hover span {
   opacity: 1; /* Mostra o texto no hover */
-}
-
-.main-content {
-  transition: margin-left 0.3s ease;
-  margin-left: 4rem; /* Margem quando colapsada */
 }
 
 .starry-sky {

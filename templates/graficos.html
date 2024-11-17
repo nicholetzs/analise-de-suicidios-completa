@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DataStar Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link href="css/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script>
@@ -26,21 +21,18 @@
         },
       };
     </script>
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-    </style>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
   </head>
-  <body class="bg-transparent">
-    <div class="starry-sky">
-      <div class="stars"></div>
-    </div>
+  <body class="bg-black">
     <aside
       class="sidebar fixed left-4 top-4 flex h-[calc(100vh-2rem)] w-16 flex-col bg-gray-800 bg-opacity-80 p-2 shadow-lg transition-all duration-300 ease-in-out group hover:w-64 rounded-2xl backdrop-blur-sm"
     >
@@ -57,7 +49,7 @@
       </div>
       <nav class="flex w-full flex-col items-center space-y-4">
         <a
-          href={{ url_for('inicio') }}
+          href="{{ url_for('inicio') }}"
           class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
@@ -71,7 +63,7 @@
           >
         </a>
         <a
-          href={{ url_for('info') }}
+          href="{{ url_for('info') }}"
           class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
@@ -85,7 +77,7 @@
           >
         </a>
         <a
-          href={{ url_for('graficos') }}
+          href="{{ url_for('graficos') }}"
           class="flex w-full items-center rounded-xl p-2 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-astro-start hover:to-astro-end hover:bg-opacity-70 astro-bg"
         >
           <div
@@ -101,7 +93,7 @@
       </nav>
     </aside>
 
-    <main class="main-content ml-24 p-8">
+    <main class="main-content ml-12 p-8">
       <h1 class="text-3xl font-bold mb-8 text-primary">
         Dashboard de Estatísticas de Suicídio
       </h1>
@@ -113,19 +105,21 @@
           <h2 class="text-lg font-bold text-white">
             Casos Totais dos Anos Analisados
           </h2>
-            <p class="text-2xl text-yellow-400">{{total_suicidios | safe}}</p>
+          <p class="text-2xl text-yellow-400">{{ total_suicidios | safe }}</p>
         </div>
-      <div class="p-4 bg-gray-800  shadow-lg text-center">
-        <h2 class="text-lg font-bold text-white">Faixa Etária Mais Afetada</h2>
-        <p class="text-2xl text-yellow-400">{{ idade | safe }}</p>
-        <p class="text-sm text-gray-300">Suicídios: {{ suicidios | safe }}</p>
-      </div>
-        <div class="p-4 bg-gray-800  shadow-lg text-center">
-        <h2 class="text-lg font-bold text-white">Local Mais Ocorrências</h2>
-        <p class="text-2xl text-yellow-400 ">{{ local | capitalize}}</p>
-        <p class="text-sm text-gray-300">Suicídios: {{ ocorrencias }}</p>
+        <div class="p-4 bg-gray-800 shadow-lg text-center">
+          <h2 class="text-lg font-bold text-white">
+            Faixa Etária Mais Afetada
+          </h2>
+          <p class="text-2xl text-yellow-400">{{ idade | safe }}</p>
+          <p class="text-sm text-gray-300">Suicídios: {{ suicidios | safe }}</p>
         </div>
-        <div class="p-4 bg-gray-800  shadow-lg text-center">
+        <div class="p-4 bg-gray-800 shadow-lg text-center">
+          <h2 class="text-lg font-bold text-white">Local Mais Ocorrências</h2>
+          <p class="text-2xl text-yellow-400">{{ local | capitalize }}</p>
+          <p class="text-sm text-gray-300">Suicídios: {{ ocorrencias }}</p>
+        </div>
+        <div class="p-4 bg-gray-800 shadow-lg text-center">
           <h2 class="text-lg font-semibold mb-2 text-warning">
             SOLICITAÇÕES PENDENTES
           </h2>
@@ -139,7 +133,7 @@
             Distribuição de Suicídios por Ano
           </h2>
           <div class="bg-gray-700 flex items-center justify-center">
-            <div class="">{{ grafico_html | safe }}</div>
+            <div>{{ grafico_html | safe }}</div>
           </div>
         </div>
 
@@ -148,15 +142,33 @@
             Distribuição De Suicídios Por Local
           </h2>
           <div class="flex items-center justify-center">
-            <div class="">{{ gerar_gr_html | safe }}</div>
+            <div>{{ gerar_gr_html | safe }}</div>
+          </div>
+        </div>
+
+        <div class="bg-dark shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Faixa Etária Mais Afetada
+          </h2>
+          <div class="flex items-center justify-center">
+            <div>{{ gerar_gr_faixa_etaria_html | safe }}</div>
+          </div>
+        </div>
+
+        <div class="bg-dark shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 text-primary">
+            Distribuição De Suicídios Por Local
+          </h2>
+          <div class="flex items-center justify-center">
+            <div>{{ gerar_grafico_suicidios_distribuicao_html | safe }}</div>
           </div>
         </div>
       </div>
     </main>
+
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css') }}"
     />
   </body>
-  <!-- End of Sidebar -->
 </html>
