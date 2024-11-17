@@ -105,24 +105,27 @@
       <h1 class="text-3xl font-bold mb-8 text-primary">
         Dashboard de Estatísticas de Suicídio
       </h1>
-
+      <h2 class="text-xl font-semibold mb-4 text-primary">
+        Estatísticas Gerais de Suicídio
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+        <div class="p-4 bg-gray-800 shadow-lg text-center">
           <h2 class="text-lg font-bold text-white">
             Casos Totais dos Anos Analisados
           </h2>
             <p class="text-2xl text-yellow-400">{{total_suicidios | safe}}</p>
         </div>
-      <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+      <div class="p-4 bg-gray-800  shadow-lg text-center">
         <h2 class="text-lg font-bold text-white">Faixa Etária Mais Afetada</h2>
         <p class="text-2xl text-yellow-400">{{ idade | safe }}</p>
         <p class="text-sm text-gray-300">Suicídios: {{ suicidios | safe }}</p>
       </div>
-        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
-          <h2 class="text-lg font-semibold mb-2 text-info">TAREFAS</h2>
-          <p class="text-3xl font-bold">50%</p>
+        <div class="p-4 bg-gray-800  shadow-lg text-center">
+        <h2 class="text-lg font-bold text-white">Local Mais Ocorrências</h2>
+        <p class="text-2xl text-yellow-400 ">{{ local | capitalize}}</p>
+        <p class="text-sm text-gray-300">Suicídios: {{ ocorrencias }}</p>
         </div>
-        <div class="p-4 bg-gray-800 rounded-lg shadow-lg text-center">
+        <div class="p-4 bg-gray-800  shadow-lg text-center">
           <h2 class="text-lg font-semibold mb-2 text-warning">
             SOLICITAÇÕES PENDENTES
           </h2>

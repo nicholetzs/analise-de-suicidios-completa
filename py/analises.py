@@ -132,3 +132,15 @@ def idade_mais_afetada():
     suicidios = faixa_agrupada.max()
 
     return idade, suicidios
+
+
+def local_mais_ocorrencias():
+    dados = ler_arquivo_csv("cleaned_result.csv")
+    if dados is None:
+        return None, None
+
+    local_agrupado = dados.groupby('LOCAL')['CONTAGEM'].sum()
+    local = local_agrupado.idxmax()
+    ocorrencias = local_agrupado.max()
+
+    return local, ocorrencias

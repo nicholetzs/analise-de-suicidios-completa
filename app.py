@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from py.analises import (criar_grafico_ocorrencias_por_ano,
-                         gerar_grafico_local, total_suicidios, idade_mais_afetada)
+                         gerar_grafico_local, total_suicidios, idade_mais_afetada, local_mais_ocorrencias)
 app = Flask(__name__)
 
 
@@ -20,7 +20,10 @@ def graficos():
     grafico_html = criar_grafico_ocorrencias_por_ano()
     gerar_gr_html = gerar_grafico_local()
     idade, suicidios = idade_mais_afetada()
-    return render_template('graficos.html', grafico_html=grafico_html, gerar_gr_html=gerar_gr_html, total_suicidios=total_suicidios(), idade=idade, suicidios=suicidios)
+    local, ocorrencias = local_mais_ocorrencias()
+
+    return render_template('graficos.html', grafico_html=grafico_html, gerar_gr_html=gerar_gr_html, total_suicidios=total_suicidios(),
+                           idade=idade, suicidios=suicidios, local=local, ocorrencias=ocorrencias)
 
 
 if __name__ == '__main__':
