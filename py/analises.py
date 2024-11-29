@@ -19,11 +19,11 @@ def ler_arquivo_csv(nome_arquivo):
     return df
 
 
+"""Essa função cria um gráfico de barras com a quantidade de ocorrências de suicídio EM CADA ANO."""
+
+
 def criar_grafico_ocorrencias_por_ano():
-    """
-    Função para criar um gráfico de barras sobre a distribuição de ocorrências por ano e retornar o HTML.
-    """
-    # Chama a função para ler o arquivo CSV
+
     dados = ler_arquivo_csv("cleaned_result.csv")
     if dados is None:
         return "<p>Erro ao carregar os dados.</p>"
@@ -74,6 +74,9 @@ def criar_grafico_ocorrencias_por_ano():
     return grafico_html
 
 
+"""Essa função cria um gráfico de pizza com a distribuição de ocorrências de suicídio por local EM TODOS OS ANOS"""
+
+
 def gerar_grafico_local():
 
     dados = ler_arquivo_csv("cleaned_result.csv")
@@ -117,10 +120,12 @@ def gerar_grafico_local():
             y=1
         )
     )
-
     # Converte o gráfico em HTML
     gerar_gr_html = pio.to_html(fig, full_html=False)
     return gerar_gr_html
+
+
+"""Essa função retorna o total de suicídios registrados EM TODOS OS ANOS."""
 
 
 def total_suicidios():
@@ -130,6 +135,9 @@ def total_suicidios():
 
     total_suicidios = dados['CONTAGEM'].sum()
     return total_suicidios
+
+
+"""Essa função retorna a idade mais afetada por suicídios e a quantidade de suicídios."""
 
 
 def idade_mais_afetada():
@@ -144,6 +152,9 @@ def idade_mais_afetada():
     return idade, suicidios
 
 
+"""EM TODOS OS ANOS O LOCAL QUE MAIS TEVE OCORRÊNCIA."""
+
+
 def local_mais_ocorrencias():
     dados = ler_arquivo_csv("cleaned_result.csv")
     if dados is None:
@@ -156,6 +167,7 @@ def local_mais_ocorrencias():
     return local, ocorrencias
 
 
+# Função para gerar o gráfico de barras com a distribuição de suicídios por faixa etária EM TODOS OS ANOS
 def gerar_grafico_faixa_etaria():
     # Ler os dados do arquivo CSV
     dados = ler_arquivo_csv("cleaned_result.csv")
@@ -208,7 +220,7 @@ def gerar_grafico_faixa_etaria():
     return gerar_gr_faixa_etaria_html
 
 
-# Função para gerar o gráfico de distribuição das maiores causas ao longo dos anos
+# Função para gerar o gráfico de distribuição das maiores causas AO LONGO DOS ANOS QUE ESTÃO NO CSV
 def gerar_grafico_suicidios_distribuicao():
     # Carregar os dados
     dados = ler_arquivo_csv("cleaned_result.csv")
@@ -269,7 +281,7 @@ def gerar_grafico_suicidios_distribuicao():
     return gerar_grafico_suicidios_distribuicao_html
 
 
-# Função para identificar a maior causa de suicídio
+# Função para identificar a maior causa de suicídio EM TODOS OS ANOS
 def maior_causa_suicidio():
     # Carregar os dados
     dados = ler_arquivo_csv("cleaned_result.csv")
